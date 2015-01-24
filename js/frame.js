@@ -8,18 +8,15 @@ var Frame = function() {
 
 Frame.prototype.store = function(roll) {
 
-  if (this.rollCount < 2) {
+  if (this.rollCount < 2 && this.isOver() === false) {
     this.rolls.push(roll);
     this.rollCount += 1;
     this.calculateScore();
+  } else {
+    return false
   }
 
 };
-
-Frame.prototype.isRollStrike = function() {
-
-};
-
 
 Frame.prototype.calculateScore = function() {
 

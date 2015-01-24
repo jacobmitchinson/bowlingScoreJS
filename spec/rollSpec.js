@@ -7,4 +7,9 @@ describe("Roll", function() {
     expect(roll.totalNumberOfHitPins).toEqual(3);
   });
 
+  it("should know when a roll is a strike", function() {
+    roll = new Roll(10);
+    expect(roll.isStrike()).toBe(true);
+  });
+
 });

@@ -1,27 +1,52 @@
 describe("Frame", function() {
 
   var frame;
+  var roll;
 
   beforeEach( function() {
     frame = new Frame();
+    roll = new Roll(5);
+    roll_strike = new Roll(10);
   });
 
-  it("should know how many rolls there have been", function() {
+  describe("should use rolls and", function() {
 
-    frame.roll();
-    expect(frame.rollCount).toEqual(1);
+    it("should store a roll", function() {
+      frame.store(roll);
+      expect(frame.rollCount).toEqual(1);
+    });
+
+    it("should not allow more than 2 rolls", function() {
+      frame.store(roll);
+      frame.store(roll);
+      frame.store(roll);
+      expect(frame.rollCount).toEqual(2);
+    });
+
+    it("should know how many rolls there have been", function() {
+      frame.store(roll);
+      expect(frame.rollCount).toEqual(1);
+    });
+
+
   });
 
-  it("should know that there are a maximum of 2 rolls", function() {
-    frame.roll();
-    frame.roll();
-    expect(frame.isOver).toBe(true);
+  describe("should use scores and", function() {
+
+    it("should calculate the score", function() {
+      frame.store(roll);
+      frame.store(roll);
+      frame.calculateScore();
+      expect(frame.score).toEqual(10);
+    });
+
+    it("should know when frame is over", function() {
+      frame.store(roll_strike);
+      expect(frame.isOver()).toBe(true);
+    });
+
   });
 
-  it("should record the score from each roll", function() {
-    frame.roll(1);
-    expect(frame.score).toEqual(1);
-  });
 
 
 });

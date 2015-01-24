@@ -7,6 +7,10 @@ describe("Roll", function() {
     expect(roll.totalNumberOfHitPins).toEqual(0);
   });
 
-
+  it("should receive input for hit pins", function() {
+    roll = new Roll();
+    roll.getInputForPinHits(2);
+    expect(roll.totalNumberOfHitPins).toEqual(2);
+  });
 
 });

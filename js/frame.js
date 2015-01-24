@@ -3,22 +3,28 @@ var Frame = function() {
   this.rollCount = 0;
   this.isOver = false;
   this.score = 0;
+  this.rolls = [];
 
 };
 
-Frame.prototype.roll = function(hits) {
+Frame.prototype.store = function(roll) {
 
- var roll = new Roll();
- roll.inputForPinHits(hits);
- this.recordHits(roll);
- this.rollCount += 1;
- this.checkOver();
+  if (this.rollCount < 2) {
+    this.rolls.push(roll);
+    this.rollCount += 1;
+  }
 
 };
 
-Frame.prototype.recordHits = function(roll) {
+Frame.prototype.calculateScore = function() {
 
-  this.score += roll.totalNumberOfHitPins;
+  this.score = 0;
+
+  var self = this;
+
+  this.rolls.forEach( function(roll) {
+    self.score += roll.totalNumberOfHitPins;
+  });
 
 };
 

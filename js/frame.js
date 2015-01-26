@@ -14,6 +14,7 @@ Frame.prototype.store = function(roll) {
     this.rolls.push(roll);
     this.rollCount += 1;
     this.calculateScore();
+    this.calculateRollScore();
   } else {
     return false
   }
@@ -37,17 +38,19 @@ Frame.prototype.calculateRollScore = function() {
 
   var self = this;
 
+  var i = 0;
+
   this.rolls.forEach( function(roll) {
 
-    for(var i = 0; i < 2; i++) {
-      if (i === 1) {
-        self.roll1Score = roll.totalNumberOfHitPins;
-      } else {
-        self.roll2Score = roll.totalNumberOfHitPins;
-      }
+    if (i === 0) {
+      self.roll1Score = roll.totalNumberOfHitPins;
+      i++;
+    } else {
+      self.roll2Score = roll.totalNumberOfHitPins;
     }
 
   });
+
 
 };
 

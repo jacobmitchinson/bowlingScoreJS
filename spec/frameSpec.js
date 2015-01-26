@@ -42,9 +42,10 @@ describe("Frame", function() {
 
     it("should return the score for each roll", function() {
       frame.store(roll);
+      roll = new Roll(6);
       frame.store(roll);
-      frame.calculateRollScore();
       expect(frame.roll1Score).toEqual(5);
+      expect(frame.roll2Score).toEqual(6);
     });
 
     it("should know when frame is over", function() {

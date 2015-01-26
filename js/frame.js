@@ -1,8 +1,10 @@
 var Frame = function() {
 
   this.rollCount = 0;
-  this.score = 0;
   this.rolls = [];
+  this.score = 0;
+  this.roll1Score = 0;
+  this.roll2Score = 0;
 
 };
 
@@ -30,6 +32,25 @@ Frame.prototype.calculateScore = function() {
   });
 
 };
+
+Frame.prototype.calculateRollScore = function() {
+
+  var self = this;
+
+  this.rolls.forEach( function(roll) {
+
+    for(var i = 0; i < 2; i++) {
+      if (i === 1) {
+        self.roll1Score = roll.totalNumberOfHitPins;
+      } else {
+        self.roll2Score = roll.totalNumberOfHitPins;
+      }
+    }
+
+  });
+
+};
+
 
 Frame.prototype.isOver = function() {
 

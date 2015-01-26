@@ -1,18 +1,27 @@
 describe("Scoreboard", function() {
 
-  var frame;
+  var scoreboard;
+  var frame1;
   var roll;
 
   beforeEach( function() {
-    frame1 = new Frame();
-    frame2 = new Frame();
+    scoreboard = new Scoreboard();
     roll = new Roll(5);
   });
 
-  describe("should show score for all frames", function() {
-    frame.store(roll(5))
-    frame.store(roll(4))
-    expect(scoreboard.totalScore).toEqual(1)
+  it("should store 10 frames", function() {
+    expect(scoreboard.frames.length).toEqual(10);
+  });
+
+  it("should know which frame player is on", function() {
+    expect(scoreboard.findCurrentFrame()).toEqual(scoreboard.frames.shift());
+  });
+
+
+
+  it("should be able to add to the score of the frame", function() {
+    scoreboard.addToScore(roll);
+    expect(scoreboard.frameScore()).toEqual(5);
   });
 
 });

@@ -18,6 +18,7 @@ Frame.prototype.store = function(roll) {
 
 };
 
+
 Frame.prototype.calculateScore = function() {
 
   this.score = 0;

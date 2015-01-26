@@ -2,6 +2,7 @@ var Scoreboard = function() {
 
   this.frames = [];
   this.generateFrames();
+  this.totalScore = 0;
 
 };
 
@@ -23,6 +24,30 @@ Scoreboard.prototype.frameScore = function() {
   return currentFrame.score;
 };
 
+Scoreboard.prototype.calculateTotalScore = function () {
+
+  this.totalScore = 0;
+
+  var self = this;
+
+  this.frames.forEach( function(frame) {
+
+    self.totalScore += frame.score;
+
+  });
+
+  return this.totalScore;
+
+};
+
+
+
+Scoreboard.prototype.findFrame = function (frame_number) {
+
+  return this.frames[(frame_number - 1)];
+
+};
+
 Scoreboard.prototype.findCurrentFrame = function() {
 
   var remainingFrames = [];
@@ -34,5 +59,5 @@ Scoreboard.prototype.findCurrentFrame = function() {
   });
 
   var currentFrame = remainingFrames.shift();
-  return currentFrame
+  return currentFrame;
 };

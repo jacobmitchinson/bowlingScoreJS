@@ -31,15 +31,32 @@ Scoreboard.prototype.calculateTotalScore = function () {
   var self = this;
 
   this.frames.forEach( function(frame) {
-
     self.totalScore += frame.score;
-
   });
 
+  self.calculateStrikeBonuses();
   return this.totalScore;
 
 };
 
+Scoreboard.prototype.calculateStrikeBonuses = function() {
+
+  var self = this;
+  var nextFrame;
+
+  this.frames.forEach( function(frame, index) {
+
+    if ((frame.rollCount === 1)) {
+
+      if (frame.roll1Score === 10) {
+        nextFrame = self.frames[index + 1];
+        self.totalScore += nextFrame.score;
+      }
+
+    }
+  });
+
+};
 
 
 Scoreboard.prototype.findFrame = function (frame_number) {

@@ -1,7 +1,7 @@
 var Roll = function(hits) {
 
   this.totalNumberOfHitPins = 0;
-  this.inputForPinHits(hits)
+  this.inputForPinHits(hits);
 
 };
 

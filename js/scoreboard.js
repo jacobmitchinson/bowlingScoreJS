@@ -17,6 +17,7 @@ Scoreboard.prototype.generateFrames = function() {
 Scoreboard.prototype.addToScore = function(roll) {
   var currentFrame = this.findCurrentFrame();
   currentFrame.store(roll);
+  this.calculateTotalScore();
 };
 
 Scoreboard.prototype.frameScore = function() {
@@ -35,6 +36,7 @@ Scoreboard.prototype.calculateTotalScore = function () {
   });
 
   self.calculateStrikeBonuses();
+  self.calculateSpareBonuses();
   return this.totalScore;
 
 };
@@ -54,6 +56,23 @@ Scoreboard.prototype.calculateStrikeBonuses = function() {
       }
 
     }
+  });
+
+};
+
+
+Scoreboard.prototype.calculateSpareBonuses = function() {
+
+  var self = this;
+  var nextFrame;
+
+  this.frames.forEach( function(frame, index) {
+
+    if ((frame.rollCount === 2 && frame.score === 10 && frame.roll1Score != 10)) {
+        nextFrame = self.frames[index + 1];
+        self.totalScore += nextFrame.roll1Score;
+    }
+
   });
 
 };

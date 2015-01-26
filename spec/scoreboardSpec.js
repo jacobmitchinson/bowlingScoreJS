@@ -44,5 +44,13 @@ describe("Scoreboard", function() {
     expect(scoreboard.calculateTotalScore()).toEqual(26);
   });
 
+  it("should calculate bonuses for spares", function() {
+    roll = new Roll(7);
+    scoreboard.addToScore(roll);
+    roll = new Roll(3);
+    scoreboard.addToScore(roll);
+    scoreboard.addToScore(roll);
+    expect(scoreboard.calculateTotalScore()).toEqual(16);
+  });
 
 });

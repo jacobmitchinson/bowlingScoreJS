@@ -28,9 +28,6 @@ TenthFrame.prototype.store = function(roll) {
 
 };
 
-//  if strike or spare then there is a third throw else there isn't
-//
-//
 
 TenthFrame.prototype.isOver = function() {
 
@@ -57,7 +54,7 @@ TenthFrame.prototype.calculateRollScore = function() {
       self.roll2Score = roll.totalNumberOfHitPins;
       i++;
     } else {
-      self.roll2Score = roll.totalNumberOfHitPins;
+      self.roll3Score = roll.totalNumberOfHitPins;
     }
 
   });

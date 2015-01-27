@@ -8,9 +8,11 @@ var Scoreboard = function() {
 
 Scoreboard.prototype.generateFrames = function() {
 
-  for(var i = 0; i < 10; i++) {
+  for(var i = 0; i < 9; i++) {
     this.frames.push(new Frame());
   }
+
+  this.frames.push(new TenthFrame());
 
 };
 
@@ -32,7 +34,7 @@ Scoreboard.prototype.calculateTotalScore = function () {
   var self = this;
 
   this.frames.forEach( function(frame) {
-    self.totalScore += frame.score;
+      self.totalScore += frame.score;
   });
 
   self.calculateStrikeBonuses();
@@ -40,6 +42,7 @@ Scoreboard.prototype.calculateTotalScore = function () {
   return this.totalScore;
 
 };
+
 
 Scoreboard.prototype.calculateStrikeBonuses = function() {
 
@@ -56,10 +59,10 @@ Scoreboard.prototype.calculateStrikeBonuses = function() {
       }
 
     }
+
   });
 
 };
-
 
 Scoreboard.prototype.calculateSpareBonuses = function() {
 
@@ -76,7 +79,6 @@ Scoreboard.prototype.calculateSpareBonuses = function() {
   });
 
 };
-
 
 Scoreboard.prototype.findFrame = function (frame_number) {
 

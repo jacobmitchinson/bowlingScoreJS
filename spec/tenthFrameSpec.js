@@ -25,5 +25,13 @@ describe("TenthFrame", function() {
     expect(frame.score).toEqual(8);
   });
 
+  it("should return the score for each roll", function() {
+    frame.store(roll);
+    frame.store(roll);
+    frame.store(roll_strike);
+    expect(frame.roll1Score).toEqual(5);
+    expect(frame.roll2Score).toEqual(5);
+    expect(frame.roll3Score).toEqual(10);
+  });
 
 });

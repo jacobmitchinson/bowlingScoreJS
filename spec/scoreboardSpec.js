@@ -53,13 +53,14 @@ describe("Scoreboard", function() {
     expect(scoreboard.calculateTotalScore()).toEqual(16);
   });
 
-  it("should calculate strike bonuses for the final round", function() {
+  it("should calculate the final round", function() {
     var lastFrame = scoreboard.findFrame(10);
     lastFrame.store(roll_strike);
     lastFrame.store(roll_strike);
     lastFrame.store(roll_strike);
     scoreboard.calculateTotalScore();
-    expect(scoreboard.totalScore).toEqual(60);
+    expect(scoreboard.totalScore).toEqual(30);
   });
+
 
 });

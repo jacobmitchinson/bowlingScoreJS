@@ -10,19 +10,14 @@ describe("Scoreboard", function() {
     roll = new Roll(5);
   });
 
-  it("should store 10 frames", function() {
-    expect(scoreboard.frames.length).toEqual(10);
+
+  it("should add to the score of a frame", function() {
+    scoreboard.addToScore(1, roll);
+    expect(scoreboard.showScoreForFrame(1)).toEqual(5);
   });
 
-  it("should retrieve frame rolls", function() {
-    frame.newRoll(roll);
-    frame.newRoll(roll);
-    expect(scoreboard.retreiveRollsFromFrame(frame)).toEqual([roll,roll]);
+  it("should show the score for a frame", function() {
+    expect(scoreboard.showScoreForFrame(1)).toEqual(0);
   });
-
-
-
-
-
 
 });

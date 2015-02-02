@@ -11,10 +11,8 @@ Roll.prototype.inputForPinHits = function(hits) {
 
 };
 
-Roll.prototype.isStrike = function() {
+Roll.prototype.showTotal = function() {
 
-  if (this.totalNumberOfHitPins === 10) {
-    return true;
-  }
+  return this.totalNumberOfHitPins;
 
 };
